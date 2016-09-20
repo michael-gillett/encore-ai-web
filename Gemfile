@@ -43,3 +43,6 @@ group :development do
   gem 'spring'
 end
 
+gem "haml"
+gem "therubyracer"
+gem 'less-rails-bootstrap'
