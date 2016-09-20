@@ -1,5 +1,5 @@
 class StaticController < ApplicationController
   def index
-    exec "pip show tensorflow"
+    @res = IO.read(Rails.root + "data/kanye_west/text.txt")
   end
 end
