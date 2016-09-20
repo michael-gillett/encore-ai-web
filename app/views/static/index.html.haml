@@ -1,6 +1,8 @@
 .container-fluid
   .row.top-section
-    =image_tag 'icon.png', class: 'logo'
+    .logo
+      =image_tag 'icon.svg'
+      encore.ai
     -# %nav.navbar.transparent.navbar-default
     -#   .navbar-header
     -#     %button.navbar-toggle.collapsed{type: 'button', 'aria-expanded': 'false', data: {toggle: 'collapse', target: '#bs-example-navbar-collapse-1'}}
@@ -33,4 +35,11 @@
             =render partial: 'artist', locals: {artist: 'Drake', description: '', uid: 'drake'}
             =render partial: 'artist', locals: {artist: 'Other Artists', description: '', uid: 'other_artist'}
   .row
-    =@res
+    .col-xs-12
+      .loading-section
+        #particles-js
+          .loader-badge
+            .loader
+            =image_tag 'icon.svg', class: 'icon'
+      .lyrics
+        =@res

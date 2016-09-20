@@ -1,5 +1,8 @@
 class StaticController < ApplicationController
   def index
-    @res = IO.read(Rails.root + "data/kanye_west/text.txt")
+    # Pick a random kanye song
+    song_path = Dir[Rails.root + "data/kanye_west/*"].sample
+    # Load the random kanye song
+    @lyrics = IO.read(song_path)
   end
 end

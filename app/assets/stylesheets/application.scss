@@ -14,3 +14,8 @@
  *= require_tree .
  *= require_self
  */
+@import 'https://fonts.googleapis.com/css?family=Montserrat:400,700';
+
+html, body {
+  font-family: 'Montserrat', sans-serif;
+}
