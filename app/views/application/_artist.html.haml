@@ -1,6 +1,7 @@
-.artist-tile
-  %a{data: {'artist': ""}}
-    %span.play GO
-  =image_tag(uid+'.png', class: 'img-responsive')
-  %h2=artist
-  %p Some string about the artist here
+.col-md-4
+  .artist-tile
+    =image_tag('artists/'+uid+'.jpg', class: 'img-responsive')
+    -# .overlay.img-responsive
+    -#   Generate Lyrics
+    %h2=artist
+    %p=description

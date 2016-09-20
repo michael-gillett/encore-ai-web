@@ -23,17 +23,21 @@
         %ul.nav.navbar-nav.navbar-right
     .col-xs-12
       %h1.title Music lives forever.
+
       .row
-        .col-md-10.col-md-offset-1
-          %button.arrow.arrow-prev{type: 'button'}=image_tag('left.png')
-          %button.arrow.arrow-next{type: 'button'}=image_tag('right.png')
-          .carousel
-            =render partial: 'artist', locals: {artist: 'Kayne West', description: '', uid: 'kanye_west'}
-            =render partial: 'artist', locals: {artist: 'Taylor Swift', description: '', uid: 'taylor_swift'}
+        .col-lg-8.col-lg-offset-2.col-md-10.col-md-offset-1
+          %h3.subtitle Select an Artist
+          .row
+            -# .col-md-10.col-md-offset-1
+            -#   %button.arrow.arrow-prev{type: 'button'}=image_tag('left.png')
+            -#   %button.arrow.arrow-next{type: 'button'}=image_tag('right.png')
+              -# .carousel
             =render partial: 'artist', locals: {artist: 'Tupac', description: '', uid: 'tupac'}
             =render partial: 'artist', locals: {artist: 'The Beatles', description: '', uid: 'the_beatles'}
+            =render partial: 'artist', locals: {artist: 'Kayne West', description: '', uid: 'kanye_west'}
+            =render partial: 'artist', locals: {artist: 'Taylor Swift', description: '', uid: 'taylor_swift'}
             =render partial: 'artist', locals: {artist: 'Drake', description: '', uid: 'drake'}
-            =render partial: 'artist', locals: {artist: 'Other Artists', description: '', uid: 'other_artist'}
+            =render partial: 'artist', locals: {artist: 'Other Artists', description: 'More Coming Soon!', uid: 'other_artist'}
   .row
     .col-xs-12
       .loading-section

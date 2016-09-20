@@ -47,14 +47,22 @@
   font-size: 20pt;
 
   img {
-    width: 60px;
+    width: 50px;
+    margin-right: 5px;
   }
 }
 
 .title {
-  margin-top: 50px;
+  margin-top: 40px;
+  margin-bottom: -5px;
   font-size: 50pt;
   text-align: center;
+}
+
+.subtitle {
+  font-size: 2.5em;
+  text-align: center;
+  margin-bottom: 25px;
 }
 
 .arrow {
@@ -80,16 +88,29 @@
 }
 
 .artist-tile {
-  margin: 5px 30px;
+  position: relative;
+  margin: 8px auto;
   display: inline-block;
-  padding: 25px;
-  background: rgba(255, 255, 255, 0.15);
   cursor: pointer;
+  text-align: center;
+
+  .overlay {
+    position: absolute;
+    top: 0px;
+    width: 250px;
+    height: 100%;
+    border-radius: 50%;
+    background:rgba(0,0,0,.75);
+    text-align:center;
+    opacity:0;
+    -webkit-transition: opacity .25s
+  }
 
   img {
-    margin: 0 auto;
     width: 250px;
     height: auto;
+    border-radius: 50%;
+    box-shadow: 5px 5px 10px rgba(0,0,0,0.3);
   }
 
   -webkit-transition: -moz-transform .3s ease-out;
@@ -106,8 +127,8 @@
   margin: -5px -30px;
 }
 
-.artist-tile a:hover {
-  background-color: rgba(0,0,0,0.3);
+.artist-tile:hover .overlay {
+  opacity: 1;
 }
 
 .slick-center {
