@@ -1,8 +1,18 @@
 .container-fluid
   .row.top-section
-    .logo
-      =image_tag 'icon.svg'
-      encore.ai
+    %nav.navbar.navbar-default.navbar-static-top
+      .container
+        .navbar-header
+          %a.navbar-brand
+            =image_tag 'icon.svg', class: 'logo'
+            encore.ai
+        #navbar.navbar-collapse.collapse
+          %ul.nav.navbar-nav.navbar-right
+            %li
+              %a{href: "http://devpost.com/software/encore-ai", target: '_blank'} About
+            %li
+              %a{:href => "https://github.com/dyelax/encore.ai", target: '_blank'} Github
+
     -# http://devpost.com/software/encore-ai
     .col-xs-12
       %h1.title Music lives forever.
