@@ -63,7 +63,7 @@ ready = function() {
           setTimeout(function() {
             $('.loading-section').hide();
             $('.lyrics-section').fadeIn();
-          }, 2000);
+          }, Math.floor((Math.random() * 5000) + 2000));
         },
         error: function(jqXHR, textStatus, errorThrown) {
           alert("Error, status = " + textStatus + ", " +

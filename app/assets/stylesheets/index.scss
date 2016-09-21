@@ -21,9 +21,13 @@
   padding: 75px 10px;
 
   .artist {
+    vertical-align: center;
+    line-height: 100px;
 
     p {
       display: inline-block;
+      margin-bottom: 0;
+      margin-top: 10px;
     }
 
     p.name {
@@ -33,7 +37,7 @@
     }
 
     p.bot {
-      font-size: 4em;
+      font-size: 3.5vw;
       color: #aaa;
       font-family: sans-serif;
       font-weight: 300;
@@ -54,6 +58,7 @@
 
   .encore-button {
     margin: 20px auto;
+    margin-top: 35px;
     display: block;
 
     width: 200px;
@@ -139,7 +144,7 @@
 
 .artist-tile {
   position: relative;
-  margin: 15px auto;
+  margin: 30px auto;
   cursor: pointer;
   text-align: center;
 
@@ -157,7 +162,7 @@
 
   img {
     margin: 0 auto;
-    width: 250px;
+    width: 225px;
     height: auto;
     border-radius: 50%;
     transition: all .3s ease-out;
@@ -168,33 +173,14 @@
     transition: all .2s ease-in;
   }
 
+  p {
+    margin: 0 auto;
+    padding: 0 35px;
+  }
+
   -webkit-transition: -moz-transform .3s ease-out;
   -moz-transition: -webkit-transform .3s ease-out;
   -o-transition: -o-transform .3s ease-out;
   transition: transform .3s ease-out;
   transform: scale(1);
-}
-
-.artist-tile a {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  margin: -5px -30px;
-}
-
-.artist-tile:hover .overlay {
-  opacity: 1;
-}
-
-.slick-center {
-  -webkit-transition: all .3s ease-out;
-  -moz-transition: all .3s ease-in;
-  -o-transition: all .3s ease-in;
-  transition: all .3s ease-in;
-  transform: scale(1.1);
-}
-
-// Remove blue focus border from slick slider
-.slick-slide {
-  outline: none !important;
 }

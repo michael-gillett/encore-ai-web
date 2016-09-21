@@ -1,7 +1,6 @@
 .col-md-4.col-sm-6
   .artist-tile{data: {'artist': uid}}
     =image_tag('artists/'+uid+'.jpg', class: 'img-responsive')
-    -# .overlay.img-responsive
-    -#   Generate Lyrics
     %h2=artist
-    %p=description
+    -if uid == 'other_artist'
+      %p=description
