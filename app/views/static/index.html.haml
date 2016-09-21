@@ -6,7 +6,7 @@
           %a.navbar-brand
             =image_tag 'icon.svg', class: 'logo'
             encore.ai
-        #navbar.navbar-collapse.collapse
+        #navbar
           %ul.nav.navbar-nav.navbar-right
             %li
               %a{href: "http://devpost.com/software/encore-ai", target: '_blank'} About
@@ -39,5 +39,11 @@
           .lyrics-section
             .artist_img
             .artist
+            %br
+            .onoffswitch
+              %input.onoffswitch-checkbox#myonoffswitch{type:'checkbox', name: 'onoffswitch', checked: true}
+              %label.onoffswitch-label{for: 'myonoffswitch'}
+                %span.onoffswitch-inner
+                %span.onoffswitch-switch
             .lyrics
             %button.encore-button Encore!

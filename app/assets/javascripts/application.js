@@ -31,6 +31,14 @@ cleanse = function(str) {
   return str;
 }
 
+displayLyrics = function() {
+  if($('#myonoffswitch').is(':checked')) {
+    $('.lyrics-section .lyrics').html(cleanse(window.lyrics));
+  } else {
+    $('.lyrics-section .lyrics').html(window.lyrics);
+  }
+}
+
 ready = function() {
   $('.artist-tile, .encore-button').click(function() {
     artist_name = $(this).data('artist');
@@ -51,7 +59,7 @@ ready = function() {
         data: {"artist": artist_name},
         success: function(data) {
           var lyrics = data.lyrics.replace(/(?:\r\n|\r|\n)/g, '<br />');
-          lyrics = cleanse(lyrics)
+          window.lyrics = lyrics
 
           // Empty out the artist title image section
           $('.lyrics-section .artist').empty();
@@ -75,7 +83,7 @@ ready = function() {
           $('.encore-button').data('artist', artist_name);
 
           // Load the lyrics
-          $('.lyrics-section .lyrics').html(lyrics);
+          displayLyrics();
 
 
           setTimeout(function() {
@@ -90,6 +98,9 @@ ready = function() {
         }
       });
     }
+    $('#myonoffswitch').click(function() {
+      displayLyrics();
+    })
   });
 
 loadParticles = function() {
