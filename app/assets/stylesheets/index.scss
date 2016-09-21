@@ -41,22 +41,19 @@
   padding: 75px 10px;
 
   .artist {
-    vertical-align: center;
-    line-height: 100px;
-
-    p {
+    span {
       display: inline-block;
       margin-bottom: 0;
       margin-top: 10px;
     }
 
-    p.name {
+    span.name {
       font-size: 4em;
       text-transform: capitalize;
       margin-right: 3px;
     }
 
-    p.bot {
+    span.bot {
       font-size: 3.5vw;
       color: #aaa;
       font-family: sans-serif;
@@ -69,6 +66,7 @@
       border-radius: 50%;
       display: inline-block;
       margin-right: 35px;
+      margin-top: -30px;
     }
   }
 

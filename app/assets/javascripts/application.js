@@ -14,6 +14,23 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+String.prototype.replaceAll = function(search, replacement) {
+    var target = this;
+    return target.replace(new RegExp(search, 'gi'), replacement);
+};
+
+// Remove inappropriate words from song lyrics
+cleanse = function(str) {
+  bannedWords = ['shit', 'motherfucker', 'fuck', 'cunt', 'cock', 'nigga', 'nigger', 'faggot', 'fag', 'pussy', 'vagina', 'penis']
+  bannedWords.forEach(function(word) {
+    replacement = new Array(word.length).join('*');
+    replacement = word[0] + replacement
+    str = str.replaceAll(word, replacement);
+  });
+  return str;
+}
+
 ready = function() {
   $('.artist-tile, .encore-button').click(function() {
     artist_name = $(this).data('artist');
@@ -34,6 +51,7 @@ ready = function() {
         data: {"artist": artist_name},
         success: function(data) {
           var lyrics = data.lyrics.replace(/(?:\r\n|\r|\n)/g, '<br />');
+          lyrics = cleanse(lyrics)
 
           // Empty out the artist title image section
           $('.lyrics-section .artist').empty();
@@ -45,12 +63,12 @@ ready = function() {
           img.appendTo('.lyrics-section .artist');
 
           // Load the artist name into a title
-          var artist = $('<p class="name">').append(artist_name.replace('_', ' '));
+          var artist = $('<span class="name">').append(artist_name.replace('_', ' '));
           artist.appendTo('.lyrics-section .artist');
 
 
           // Add the bot text
-          var bot = $('<p class="bot">').append("bot");
+          var bot = $('<span class="bot">').append("bot");
           bot.appendTo('.lyrics-section .artist');
 
           // Update the encore button
@@ -63,7 +81,7 @@ ready = function() {
           setTimeout(function() {
             $('.loading-section').hide();
             $('.lyrics-section').fadeIn();
-          }, Math.floor((Math.random() * 5000) + 3500));
+          }, Math.floor((Math.random() * 500) + 350));
         },
         error: function(jqXHR, textStatus, errorThrown) {
           alert("Error, status = " + textStatus + ", " +
