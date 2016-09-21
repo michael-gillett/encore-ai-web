@@ -22,7 +22,7 @@ String.prototype.replaceAll = function(search, replacement) {
 
 // Remove inappropriate words from song lyrics
 cleanse = function(str) {
-  bannedWords = ['shit', 'motherfucker', 'fuck', 'cunt', 'cock', 'nigga', 'nigger', 'faggot', 'fag', 'pussy', 'vagina', 'penis', 'bitch']
+  bannedWords = ['shit', 'motherfucker', 'fuck', 'cunt', 'cock', 'nigga', 'nigger', 'faggot', 'fag', 'pussy', 'bitch']
   bannedWords.forEach(function(word) {
     replacement = new Array(word.length).join('*');
     replacement = word[0] + replacement
