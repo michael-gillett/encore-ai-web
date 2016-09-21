@@ -15,59 +15,67 @@
 //= require turbolinks
 //= require_tree .
 ready = function() {
-  $('.thumb a').click(function() {
+  $('.artist-tile, .encore-button').click(function() {
     artist_name = $(this).data('artist');
-    if(typeof artist_name != 'undefined') {
-      $(".lyrics .subtitle").fadeIn(600)
-      $(".lyrics .subtitle").html('Training...')
+    if(artist_name == 'other_artist') {
+      alert('We will be adding more artists in the future!');
+    } else {
+      $('.lyrics-section').hide();
+      $('.loading-section').show();
+      loadParticles();
+
       $('html, body').animate({
-        scrollTop: $(".lyrics .subtitle").offset().top
+        scrollTop: $(".loading-section").offset().top
       }, 1000);
-      $.post('/lyric', {artist: artist_name}, function(data) {
-        lyrics = data.lyrics.replace('*BREAK*', '\n')
-        $('.lyrics .subtitle').html(artist_name.replace('_', ' '))
-        $('.lyrics .container').html(lyrics)
-      })
+
+      $.ajax({
+        type: "POST",
+        url:  '/lyrics.json',
+        data: {"artist": artist_name},
+        success: function(data) {
+          var lyrics = data.lyrics.replace(/(?:\r\n|\r|\n)/g, '<br />');
+
+          // Empty out the artist title image section
+          $('.lyrics-section .artist').empty();
+
+          // Load the artists image
+          var artist_image_url = $('*[data-artist="'+artist_name+'"] img')[0].src;
+          var img = $('<img>');
+          img.attr('src', artist_image_url);
+          img.appendTo('.lyrics-section .artist');
+
+          // Load the artist name into a title
+          var artist = $('<p class="name">').append(artist_name.replace('_', ' '));
+          artist.appendTo('.lyrics-section .artist');
+
+
+          // Add the bot text
+          var bot = $('<p class="bot">').append("bot");
+          bot.appendTo('.lyrics-section .artist');
+
+          // Update the encore button
+          $('.encore-button').data('artist', artist_name);
+
+          // Load the lyrics
+          $('.lyrics-section .lyrics').html(lyrics);
+
+
+          setTimeout(function() {
+            $('.loading-section').hide();
+            $('.lyrics-section').fadeIn();
+          }, 2000);
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+          alert("Error, status = " + textStatus + ", " +
+                "error thrown: " + errorThrown
+          );
+        }
+      });
     }
   });
 
-  $('.carousel').slick({
-    centerMode: true,
-    centerPadding: '60px',
-    dots: false,
-    infinite: true,
-    speed: 300,
-    slidesToShow: 3,
-    slidesToScroll: 3,
-    prevArrow: '.arrow-prev',
-    nextArrow: '.arrow-next',
-
-    responsive: [
-      {
-        breakpoint: 1370,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3,
-        }
-      },
-      {
-        breakpoint: 1060,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
-        }
-      },
-      {
-        breakpoint: 745,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1
-        }
-      }
-    ]
-  });
-
-  // Particles.js
+loadParticles = function() {
+    // Particles.js
   particlesJS("particles-js", {
     "particles":{
         "number":{
@@ -139,6 +147,7 @@ ready = function() {
      },
      "retina_detect":true
   });
+}
 }
 
 $(ready)

@@ -3,24 +3,6 @@
     .logo
       =image_tag 'icon.svg'
       encore.ai
-    -# %nav.navbar.transparent.navbar-default
-    -#   .navbar-header
-    -#     %button.navbar-toggle.collapsed{type: 'button', 'aria-expanded': 'false', data: {toggle: 'collapse', target: '#bs-example-navbar-collapse-1'}}
-    -#       %span.sr-only Toggle navigation
-    -#       %span.icon-bar
-    -#       %span.icon-bar
-    -#       %span.icon-bar
-
-    -#     %a.navbar-brand{href: "#"}
-    -#       =image_tag 'icon.png', class: 'logo'
-
-      .collapse.navbar-collapse#bs-example-navbar-collapse-1
-        %ul.nav.navbar-nav
-        %form.navbar-form.navbar-right
-          .form-group
-            %input{type: "text", class: "form-control", placeholder: "Search Artists", style: "color: black;"}
-          %a{type: "submit", class: "btn"} Search
-        %ul.nav.navbar-nav.navbar-right
     .col-xs-12
       %h1.title Music lives forever.
 
@@ -28,10 +10,6 @@
         .col-lg-8.col-lg-offset-2.col-md-10.col-md-offset-1
           %h3.subtitle Select an Artist
           .row
-            -# .col-md-10.col-md-offset-1
-            -#   %button.arrow.arrow-prev{type: 'button'}=image_tag('left.png')
-            -#   %button.arrow.arrow-next{type: 'button'}=image_tag('right.png')
-              -# .carousel
             =render partial: 'artist', locals: {artist: 'Tupac', description: '', uid: 'tupac'}
             =render partial: 'artist', locals: {artist: 'The Beatles', description: '', uid: 'the_beatles'}
             =render partial: 'artist', locals: {artist: 'Kayne West', description: '', uid: 'kanye_west'}
@@ -45,5 +23,10 @@
           .loader-badge
             .loader
             =image_tag 'icon.svg', class: 'icon'
-      .lyrics
-        =@res
+      .row
+        .col-lg-6.col-lg-offset-3.col-md-8.col-md-offset-2.col-sm-10.col-sm-offset-1
+          .lyrics-section
+            .artist_img
+            .artist
+            .lyrics
+            %button.encore-button Encore!
