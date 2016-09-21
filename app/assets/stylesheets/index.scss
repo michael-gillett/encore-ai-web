@@ -41,6 +41,7 @@
   padding: 75px 10px;
 
   .artist {
+    margin-bottom: 5px;
     span {
       display: inline-block;
       margin-bottom: 0;
@@ -83,12 +84,13 @@
       border-radius: 50%;
       display: inline-block;
       margin-right: 25px;
-      margin-top: -30px;
+      margin-top: -15px;
     }
   }
 
   .lyrics {
     font-size: 14pt;
+    margin-top: -10px;
   }
 
   .encore-button {

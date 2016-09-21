@@ -5,7 +5,7 @@ class LyricsController < ApplicationController
     # Load the random kanye song
     @lyrics = {lyrics: IO.read(song_path)}
     respond_to do |format|
-      format.json { render json: @lyrics }
+      format.json { render json: @lyrics.to_json }
       format.html {}
     end
   end
