@@ -10,6 +10,17 @@
   background: -webkit-linear-gradient(top,  #673ab7 0%,#8065b2 100%); /* Chrome10-25,Safari5.1-6 */
   background: linear-gradient(to bottom,  #673ab7 0%,#8065b2 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#673ab7', endColorstr='#8065b2',GradientType=0 ); /* IE6-9 */
+
+  .announce {
+    color: white;
+    font-size: 16px;
+    display: block;
+    padding: 10px;
+    background-color: #4cace9;
+    border-radius: 10px;
+    padding-left: 20px;
+    margin-bottom: 15px;
+  }
 }
 
 .loading-section {
